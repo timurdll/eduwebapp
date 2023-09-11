@@ -1,89 +1,110 @@
-.Landing__wrapper{
-    margin-top: 35px;
-    margin-bottom: 35px;
-    display: flex;
-    flex-direction: column;
-	gap: 10vh;
-	justify-content: center;
-    align-items: center;
+.Landing__wrapper {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 10vh;
+  justify-content: center;
+  align-items: center;
 }
 
 .Landing__about {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    animation: fade-in 0.5s ease-in-out forwards;
-    animation-delay: 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: fade-in 0.5s ease-in-out forwards;
+  animation-delay: 0.5s;
 }
-    
+
 .Landing__about .divider {
-    font-size: 20px;
-    width: 100%;
-    line-height: 1.5;
-    padding: 0 10px;
-    color: #fff;
-    background-color: #1976d2;
-    border-radius: 0px 7px 7px 0px;
+  font-size: 20px;
+  width: 100%;
+  line-height: 1.5;
+  padding: 0 10px;
+  color: #fff;
+  background-color: #1976d2;
+  border-radius: 0px 7px 7px 0px;
 }
 
 .Landing__table .divider {
-    font-size: 20px;
-    width: 100%;
-    line-height: 1.5;
-    padding: 0 10px;
-    color: #fff;
-    background-color: #1976d2;
-    border-radius: 0px 7px 7px 0px;
-    margin-bottom: 20px;
-}
-    
-.Landing__about .text {
-    font-size: 18px;
-    color: #333;
-    margin-top: 10px;
+  font-size: 20px;
+  width: 100%;
+  line-height: 1.5;
+  padding: 0 10px;
+  color: #fff;
+  background-color: #1976d2;
+  border-radius: 0px 7px 7px 0px;
+  margin-bottom: 20px;
 }
 
-.Landing__cards{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5vh;
-    justify-content: center;
+.Landing__about .text {
+  font-size: 18px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.Landing__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5vh;
+  justify-content: center;
 }
 
 .Landing__image {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    margin: 20px 0;
-    transform: translateX(-120%);
-    animation: slide-in 0.5s ease-in-out forwards;
-    animation-delay: 1.5s;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 20px 0;
+  transform: translateX(-120%);
+  animation: slide-in 0.5s ease-in-out forwards;
+  animation-delay: 1.5s;
+}
+
+.Landing__placeholder {
+  width: 100%;
+  display: flex;
+  gap: 5vh;
+  flex-direction: column;
+}
+
+.label {
+  text-align: center;
+}
+
+.table {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.7
+  ); /* Add transparency for the blurry effect */
+  filter: blur(5px); /* Apply blur effect */
+  pointer-events: none; /* Make it unclickable */
 }
 
 li {
-    padding-top: 16px;
-  }
-  
+  padding-top: 16px;
+}
 
 .Landing__table {
-   width: 100%;
+  width: 100%;
 }
 
 @keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0%);
-    }
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
 }

@@ -1,0 +1,20 @@
+/* PlaceholderTable.css */
+
+.placeholder-table {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* Add transparency for the blurry effect */
+    filter: blur(5px); /* Apply blur effect */
+    pointer-events: none; /* Make it unclickable */
+  }
+  
+  .placeholder-row {
+    display: flex;
+    border-bottom: 1px solid #ccc; /* Add a border to simulate table rows */
+  }
+  
+  .placeholder-cell {
+    flex: 1;
+    padding: 8px;
+    /* Add other cell styling as needed */
+  }
+  

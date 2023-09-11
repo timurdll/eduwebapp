@@ -7,6 +7,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Link,
 } from "@mui/material";
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
 import BookOutlinedIcon from "@mui/icons-material/BookOutlined";
@@ -16,21 +17,78 @@ import { db } from "../../../firebase-config";
 import { doc, getDoc } from "firebase/firestore";
 import { UserAuth } from "../../../Context/AuthContext";
 import { useEffect, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { SIGNUP_ROUTE } from "../../utils/consts";
 
 const Landing = () => {
   const { user } = UserAuth();
-  const [rows, setRows] = useState([]);
+
+  // Define mock data for rows
+  const mockData = [
+    {
+      isBlocked: false,
+      isCompleted: false,
+      moduleLink: "/vocabulary/1",
+      moduleName: "Mock Module 1",
+    },
+    {
+      isBlocked: false,
+      isCompleted: false,
+      moduleLink: "/vocabulary/2",
+      moduleName: "Mock Module 2",
+    },
+    {
+      isBlocked: false,
+      isCompleted: false,
+      moduleLink: "/vocabulary/2",
+      moduleName: "Mock Module 3",
+    },
+    {
+      isBlocked: false,
+      isCompleted: false,
+      moduleLink: "/vocabulary/2",
+      moduleName: "Mock Module 4",
+    },
+    {
+      isBlocked: false,
+      isCompleted: false,
+      moduleLink: "/vocabulary/2",
+      moduleName: "Mock Module 5",
+    },
+    {
+      isBlocked: false,
+      isCompleted: false,
+      moduleLink: "/vocabulary/2",
+      moduleName: "Mock Module 6",
+    },
+    {
+      isBlocked: false,
+      isCompleted: false,
+      moduleLink: "/vocabulary/2",
+      moduleName: "Mock Module 7",
+    },
+    {
+      isBlocked: false,
+      isCompleted: false,
+      moduleLink: "/vocabulary/2",
+      moduleName: "Mock Module 8",
+    },
+  ];
+
+  // Initialize rows with mock data
+  const [rows, setRows] = useState(mockData);
+
   useEffect(() => {
     const fetchFinishedModules = async () => {
       if (user?.uid) {
         const userRef = doc(db, "users", user.uid);
         const userSnap = await getDoc(userRef);
         const userData = userSnap.data();
-        setRows(userData?.modules || []); 
+        setRows(userData?.modules || []);
       }
     };
     fetchFinishedModules();
-  }, [user?.uid]); 
+  }, [user?.uid]);
 
   const { t } = useTranslation();
 
@@ -39,6 +97,10 @@ const Landing = () => {
     from: { opacity: -1 },
     config: { duration: 1500 },
   });
+  const linkStyles = {
+    textDecoration: "none", // Remove text decoration (underline)
+    // Add more inline styles as needed
+  };
 
   return (
     <animated.div style={fadeIn} className="Landing__wrapper">
@@ -71,11 +133,28 @@ const Landing = () => {
         </List>
       </animated.section>
       <animated.section style={fadeIn} className="Landing__table">
-        <Typography variant="h4" sx={{ mb: 2, color: "#1976d2" }}>
+        <Typography
+          variant="h4"
+          sx={{ mb: 2, color: "#1976d2", textAlign: "center" }}
+        >
           {t("modules")}
         </Typography>
+
         <Divider sx={{ mb: 2 }} />
-        <BasicTable rows={rows} />
+        {user ? (
+          <BasicTable rows={rows} />
+        ) : (
+          <div className="Landing__placeholder">
+            <RouterLink to={SIGNUP_ROUTE} style={linkStyles}>
+              <Link style={linkStyles}>
+                <div className="label">{t("register")}</div>
+              </Link>
+            </RouterLink>
+            <div className="table">
+              <BasicTable rows={rows} />
+            </div>
+          </div>
+        )}
       </animated.section>
       <animated.section style={fadeIn} className="Landing__information">
         <Typography variant="h4" sx={{ mb: 2, color: "#1976d2" }}>

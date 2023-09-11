@@ -25,6 +25,7 @@
     "first_name": "First Name",
     "last_name": "Last Name",
     "features": "Features",
+    "modules": "Modules",
     "feature_1": "This feature is designed to help users learn new words and phrases related to IT and technology. It might include a library of words and definitions, as well as interactive exercises and quizzes to help users practice and reinforce their knowledge. Users may also be able to track their progress over time and receive personalized recommendations for new words to learn based on their interests and skill level.",
     "feature_2": "This feature is designed to help users improve their reading comprehension in English, with a focus on IT-related topics. It may include articles or other texts that users can read and analyze, as well as interactive tools to help users understand new vocabulary and concepts. There may also be quizzes or other assessments to help users test their comprehension and track their progress over time.",
     "feature_3": "This feature is designed to help users practice their English language skills in a more interactive and engaging way. It may include a variety of games, exercises, and simulations, such as quizzes, puzzles, role-playing activities, and conversation simulations. These activities may be tailored to users' interests and skill levels, and may provide immediate feedback and guidance to help users improve their language skills.",
@@ -33,5 +34,6 @@
     "why_3" : "Finally, learning IT English can improve your overall communication skills. Many of the skills required for effective IT communication, such as clarity, precision, and attention to detail, are transferable to other fields and can benefit you in both your personal and professional life. In a globalized world where cross-cultural communication is becoming increasingly important, being proficient in IT English can give you a valuable advantage in navigating diverse professional and social environments.",
     "header_1": "IT Vocabulary Builder",
     "header_2": "Reading Comprehension for IT",
-    "header_3": "Interactive English Language Practice"    
+    "header_3": "Interactive English Language Practice",
+    "register": "Signup or login to get access to lessons"
 }
