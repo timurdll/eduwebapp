@@ -1,0 +1,44 @@
+.menu__wrapper{
+    position: absolute;
+    width: 100vw;
+    height: 75px;
+    background-color: rgb(255, 255, 255);
+    margin-left: calc(-50vw + 50%);
+}
+
+.menu__container{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img{
+    width: min(296px, 80%);
+}   
+
+.menu__buttons{
+    display: flex;
+    gap: 1vw;
+}
+
+.menu__logo{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu__elementsWrapper{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1vw;
+}
+
+.menu__links{
+    display: flex;
+    gap: 1vw;
+}

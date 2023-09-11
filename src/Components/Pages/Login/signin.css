@@ -1,0 +1,12 @@
+.Login {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+  
+.Login > div {
+  margin-bottom: 10px;
+}

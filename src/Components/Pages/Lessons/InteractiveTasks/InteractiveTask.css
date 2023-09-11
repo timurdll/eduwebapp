@@ -1,0 +1,62 @@
+.tasks__container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.interactive-task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    width: 80%;
+    max-width: 800px;
+    margin: 2rem auto;
+  }
+  
+  .interactive-task__text {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  
+  .interactive-task__instructions {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .interactive-task__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .interactive-task__input {
+    padding: 0.5rem;
+    border: 2px solid #ccc;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1.2rem;
+  }
+  
+  .interactive-task__submit-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #0070f3;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .interactive-task__submit-button:hover {
+    background-color: #0060df;
+  }
+  
