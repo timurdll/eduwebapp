@@ -8,6 +8,8 @@ import { LOGIN_ROUTE, PROFILE_ROUTE } from "../../utils/consts";
 import { UserAuth } from "../../../Context/AuthContext";
 import "./signup.css";
 import { useTranslation } from "react-i18next";
+import { auth, googleProvider } from "../../../firebase-config";
+import { signInWithPopup } from "firebase/auth";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -86,6 +88,19 @@ export default function Signup() {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      // Handle the result and navigation as needed
+      const user = result.user;
+      console.log("Google Sign-In Successful", user);
+      navigate(PROFILE_ROUTE);
+    } catch (error) {
+      console.error("Google Sign-In Error", error);
+      setError(t("google_sign_in_error")); // Display an error message to the user
+    }
+  };
+
   return (
     <form className="Login" onSubmit={handleSubmit}>
       <div>
@@ -132,6 +147,16 @@ export default function Signup() {
       <div>
         <Button variant="contained" color="primary" type="submit">
           {t("sign_up")}
+        </Button>
+      </div>
+
+      <div>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={handleGoogleSignIn}
+        >
+          {t("sign_up_with_google")}
         </Button>
       </div>
 
