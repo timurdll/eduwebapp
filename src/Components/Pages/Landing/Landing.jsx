@@ -29,49 +29,55 @@ const Landing = () => {
       isBlocked: false,
       isCompleted: false,
       moduleLink: "/vocabulary/1",
-      moduleName: "Mock Module 1",
+      moduleName: "Types of Computer",
     },
     {
       isBlocked: false,
       isCompleted: false,
       moduleLink: "/vocabulary/2",
-      moduleName: "Mock Module 2",
+      moduleName: "Monitors",
     },
     {
       isBlocked: false,
       isCompleted: false,
       moduleLink: "/vocabulary/2",
-      moduleName: "Mock Module 3",
+      moduleName: "Computer Mice",
     },
     {
       isBlocked: false,
       isCompleted: false,
       moduleLink: "/vocabulary/2",
-      moduleName: "Mock Module 4",
+      moduleName: "Whats in your computer",
     },
     {
       isBlocked: false,
       isCompleted: false,
       moduleLink: "/vocabulary/2",
-      moduleName: "Mock Module 5",
+      moduleName: "Keyboards",
     },
     {
       isBlocked: false,
       isCompleted: false,
       moduleLink: "/vocabulary/2",
-      moduleName: "Mock Module 6",
+      moduleName: "Printers",
     },
     {
       isBlocked: false,
       isCompleted: false,
       moduleLink: "/vocabulary/2",
-      moduleName: "Mock Module 7",
+      moduleName: "Data storage devices",
     },
     {
       isBlocked: false,
       isCompleted: false,
       moduleLink: "/vocabulary/2",
-      moduleName: "Mock Module 8",
+      moduleName: "Cameras",
+    },
+    {
+      isBlocked: false,
+      isCompleted: false,
+      moduleLink: "/vocabulary/2",
+      moduleName: "Scanners",
     },
   ];
 
@@ -89,6 +95,8 @@ const Landing = () => {
     };
     fetchFinishedModules();
   }, [user?.uid]);
+
+  console.log(rows);
 
   const { t } = useTranslation();
 
