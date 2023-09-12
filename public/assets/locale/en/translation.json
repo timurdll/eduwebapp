@@ -42,5 +42,7 @@
   "submit": "Submit",
   "name": "name",
   "email": "email",
-  "message": "message"
+  "message": "message",
+  "language": "EN",
+  "information": "Functions of application"
 }

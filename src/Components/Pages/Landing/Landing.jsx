@@ -81,7 +81,6 @@ const Landing = () => {
     },
   ];
 
-  // Initialize rows with mock data
   const [rows, setRows] = useState(mockData);
 
   useEffect(() => {
@@ -96,8 +95,6 @@ const Landing = () => {
     fetchFinishedModules();
   }, [user?.uid]);
 
-  console.log(rows);
-
   const { t } = useTranslation();
 
   const fadeIn = useSpring({
@@ -106,8 +103,7 @@ const Landing = () => {
     config: { duration: 1500 },
   });
   const linkStyles = {
-    textDecoration: "none", // Remove text decoration (underline)
-    // Add more inline styles as needed
+    textDecoration: "none",
   };
 
   return (
@@ -165,7 +161,10 @@ const Landing = () => {
         )}
       </animated.section>
       <animated.section style={fadeIn} className="Landing__information">
-        <Typography variant="h4" sx={{ mb: 2, color: "#1976d2" }}>
+        <Typography
+          variant="h4"
+          sx={{ mb: 2, color: "#1976d2", textAlign: "center" }}
+        >
           {t("information")}
         </Typography>
         <List sx={{ mb: 2, display: "flex", flexDirection: "column", gap: 5 }}>
