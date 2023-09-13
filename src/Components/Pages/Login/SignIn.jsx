@@ -77,11 +77,10 @@ export default function SignIn() {
       {/* Google Sign-In button */}
       <div>
         <Button
-          variant="contained"
-          color="secondary"
+          className="google-signin-button" // Add a class for custom styling
           onClick={handleGoogleSignIn}
         >
-          {t("sign_in_with_google")}
+          <span className="google-icon">G</span> {t("sign_in_with_google")}
         </Button>
       </div>
 
