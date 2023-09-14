@@ -44,5 +44,6 @@
   "email": "email",
   "message": "message",
   "language": "EN",
-  "information": "Functions of application"
+  "information": "Functions of application",
+  "sign_in_with_google": "Sign in with Google"
 }

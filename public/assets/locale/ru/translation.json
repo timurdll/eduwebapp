@@ -45,5 +45,6 @@
   "email": "электронная почта",
   "message": "сообщение",
   "language": "RU",
-  "information": "Функционал приложения"
+  "information": "Функционал приложения",
+  "sign_in_with_google": "Войти с помощью Google"
 }
