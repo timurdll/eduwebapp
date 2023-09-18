@@ -34,19 +34,17 @@ export default function SignIn() {
   const handleGoogleSignIn = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      // Handle the result and navigation as needed
       const user = result.user;
       console.log("Google Sign-In Successful", user);
       navigate(PROFILE_ROUTE);
     } catch (error) {
       console.error("Google Sign-In Error", error);
-      setError(t("google_sign_in_error")); // Display an error message to the user
+      setError(t("google_sign_in_error"));
     }
   };
 
   return (
     <form className="Login" onSubmit={handleSubmit}>
-      {/* Your input fields for email and password */}
       <div>
         <TextField
           id="email"
@@ -73,17 +71,11 @@ export default function SignIn() {
           {t("log_in")}
         </Button>
       </div>
-
-      {/* Google Sign-In button */}
       <div>
-        <Button
-          className="google-signin-button" // Add a class for custom styling
-          onClick={handleGoogleSignIn}
-        >
+        <Button className="google-signin-button" onClick={handleGoogleSignIn}>
           <span className="google-icon">G</span> {t("sign_in_with_google")}
         </Button>
       </div>
-
       <div>
         <Link component={RouterLink} to={SIGNUP_ROUTE} underline="none">
           {t("sign_up")}

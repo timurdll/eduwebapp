@@ -10,6 +10,8 @@ import "./signup.css";
 import { useTranslation } from "react-i18next";
 import { auth, googleProvider } from "../../../firebase-config";
 import { signInWithPopup } from "firebase/auth";
+import { doc, setDoc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
+import { db } from "../../../firebase-config";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -77,6 +79,24 @@ export default function Signup() {
   const { createUser } = UserAuth();
   const { t } = useTranslation();
 
+  const addUserModules = async (userId, modulesToAdd) => {
+    try {
+      const userRef = doc(db, "users", userId);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        await setDoc(userRef, { modules: modulesToAdd });
+      } else {
+        await updateDoc(userRef, {
+          modules: arrayUnion(...modulesToAdd),
+        });
+      }
+    } catch (error) {
+      console.error("Error adding modules to user:", error);
+      throw error;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -91,13 +111,23 @@ export default function Signup() {
   const handleGoogleSignIn = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      // Handle the result and navigation as needed
       const user = result.user;
+
+      await setDoc(doc(db, "users", user.uid), {
+        firstName: user.displayName,
+      });
+
+      try {
+        await addUserModules(user.uid, modules);
+      } catch (moduleError) {
+        console.error("Error adding modules:", moduleError);
+      }
+
       console.log("Google Sign-In Successful", user);
       navigate(PROFILE_ROUTE);
     } catch (error) {
       console.error("Google Sign-In Error", error);
-      setError(t("google_sign_in_error")); // Display an error message to the user
+      setError(t("google_sign_in_error"));
     }
   };
 
@@ -149,17 +179,11 @@ export default function Signup() {
           {t("sign_up")}
         </Button>
       </div>
-
       <div>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={handleGoogleSignIn}
-        >
-          {t("sign_up_with_google")}
+        <Button className="google-signin-button" onClick={handleGoogleSignIn}>
+          <span className="google-icon">G</span> {t("sign_in_with_google")}
         </Button>
       </div>
-
       <div>
         <Link component={RouterLink} to={LOGIN_ROUTE} underline="none">
           {t("log_in")}

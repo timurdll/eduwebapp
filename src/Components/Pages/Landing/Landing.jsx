@@ -146,7 +146,10 @@ const Landing = () => {
 
         <Divider sx={{ mb: 2 }} />
         {user ? (
-          <BasicTable rows={rows} />
+          <div>
+            <div>Progress bar</div>
+            <BasicTable rows={rows} />
+          </div>
         ) : (
           <div className="Landing__placeholder">
             <RouterLink to={SIGNUP_ROUTE} style={linkStyles}>

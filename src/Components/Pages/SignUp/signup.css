@@ -7,7 +7,17 @@
   margin-top: -79px;
   padding: 0 20px;
 }
-  
+
 .Login > div {
   margin-bottom: 10px;
+}
+
+.google-signin-button {
+  background-color: #ccc;
+  color: #333;
+}
+
+.google-icon {
+  font-size: 20px;
+  margin-right: 10px;
 }
