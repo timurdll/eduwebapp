@@ -53,8 +53,15 @@ const Header = () => {
     };
   }, []);
 
+  const toggleMenu = () => {
+    setMenuActive(!menuActive);
+  };
+
   return (
-    <div className="header__wrapper">
+    <div
+      className="header__wrapper"
+      style={menuActive ? { position: "fixed", zIndex: "1" } : {}}
+    >
       <div className="header__container">
         <div className="header__logo">
           <Link
@@ -79,10 +86,14 @@ const Header = () => {
                 value={selectedLanguage}
                 style={{ color: "#1976d2", height: "32px" }}
                 size="small"
+                MenuProps={{
+                  style: {
+                    position: "absolute",
+                  },
+                }}
               >
                 {languages.map(({ code, name }) => (
                   <MenuItem key={code} value={code}>
-                    {""}
                     {name}
                   </MenuItem>
                 ))}
@@ -121,7 +132,9 @@ const Header = () => {
             </div>
           </div>
         )}
-        {menuActive === true && windowWidth <= 925 ? <Menu /> : null}
+        {menuActive === true && windowWidth <= 925 ? (
+          <Menu toggleMenu={toggleMenu} menuActive={menuActive} />
+        ) : null}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import {
   ListItem,
   ListItemText,
   Link,
+  LinearProgress,
 } from "@mui/material";
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
 import BookOutlinedIcon from "@mui/icons-material/BookOutlined";
@@ -96,6 +97,25 @@ const Landing = () => {
   }, [user?.uid]);
 
   const { t } = useTranslation();
+  const [completedModules, setCompletedModules] = useState(0);
+  const [totalModules, setTotalModules] = useState(0);
+
+  useEffect(() => {
+    if (user?.uid) {
+      const userRef = doc(db, "users", user.uid);
+      getDoc(userRef).then((userSnap) => {
+        if (userSnap.exists()) {
+          const userData = userSnap.data();
+          const completedModulesCount = userData?.finishedModules?.length || 0;
+          const totalModulesCount = userData?.modules?.length || 0;
+          setCompletedModules(completedModulesCount);
+          setTotalModules(totalModulesCount);
+        }
+      });
+    }
+  }, [user?.uid]);
+
+  const progress = (completedModules / totalModules) * 100;
 
   const fadeIn = useSpring({
     opacity: 1,
@@ -106,6 +126,7 @@ const Landing = () => {
     textDecoration: "none",
   };
 
+  console.log(progress);
   return (
     <animated.div style={fadeIn} className="Landing__wrapper">
       <animated.section style={fadeIn} className="Landing__about">
@@ -147,7 +168,14 @@ const Landing = () => {
         <Divider sx={{ mb: 2 }} />
         {user ? (
           <div>
-            <div>Progress bar</div>
+            <div className="progress-label">
+              {`${completedModules} / ${totalModules} ${t("modulesCompleted")}`}
+            </div>
+            <LinearProgress
+              variant="determinate"
+              value={progress}
+              sx={{ width: "100%", mb: 2 }}
+            />
             <BasicTable rows={rows} />
           </div>
         ) : (
